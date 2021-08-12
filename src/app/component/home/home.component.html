@@ -1,0 +1,43 @@
+<div class="home-page">
+    <div class="home-page-container">
+
+        <div class="toolbar-container">
+            <div class="sort">
+                <button (click)="sortBlogs()">Sort by title</button>
+            </div>
+            <div class="search">
+                <input type="text" [(ngModel)]="searchValue" name="searchValue">
+                <button (click)="searchBlog()">Search</button>
+            </div>
+        </div>
+
+        <div class="list-blog">
+            <ul class="list-blog-cards">
+                <li class="blog-card" *ngFor="let item of listBlogs" (click)="blogDetail(item.id)">
+                    <img src="{{item.image}}"
+                        class="blog-card-image" alt="...">
+                    <div class="blog-card-content">
+                        <div class="blog-card-content-title">{{item.title}}</div>
+                        {{item.content}}
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="pagination">
+            <ul class="pagination-container">
+                <li class="page-item">
+                    <div (click)="previousPage()" [ngClass]="currentPage == 1 ? 'page-link disabled' : 'page-link'" tabindex="-1" aria-disabled="true">Previous</div>
+                </li>
+                <li class="page-item" *ngFor="let page of listPage">
+                    <div (click)="goToPage(page)" [ngClass]="page + 1 == currentPage ? 'page-link active' : 'page-link'">{{page + 1}}</div>
+                </li>
+                <li class="page-item">
+                    <div (click)="nextPage()" [ngClass]="currentPage == (totalPage) ? 'page-link disabled' : 'page-link'">Next</div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+<app-loading [loading]="loading"></app-loading>

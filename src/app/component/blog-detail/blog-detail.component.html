@@ -1,0 +1,17 @@
+<div class="blog-detail-page">
+    <div class="blog-detail-container">
+        <div class="img">
+            <img [src]="dataBlogDetail?.image" alt="">
+        </div>
+        <div class="title">
+            {{dataBlogDetail.title}}
+        </div>
+        <div class="content">
+            {{dataBlogDetail.content}}
+        </div>
+        <div class="back-button">
+            <button (click)="goBackHome()">Back</button>
+        </div>
+    </div>
+    <app-loading [loading]="loading"></app-loading>
+</div>
